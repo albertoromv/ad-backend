@@ -4,7 +4,7 @@ import subprocess
 
 import numpy as np
 import pandas as pd
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from sklearn.linear_model import Lasso
 from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -95,9 +95,9 @@ def webhook():
             try:
                 os.chdir(path_repo)
             except FileNotFoundError:
-                return jsonify(
-                    {"message": "The directory of the repository does not exist!"}
-                ), 404
+                return {
+                    "message": "The directory of the repository does not exist!"
+                }, 404
 
             # Do a git pull in the repository
             try:
@@ -105,19 +105,19 @@ def webhook():
                 subprocess.run(
                     ["touch", servidor_web], check=True
                 )  # Trick to automatically reload PythonAnywhere WebServer
-                return jsonify(
-                    {"message": f"A git pull was applied in the repository {repo_name}"}
-                ), 200
+                return {
+                    "message": f"A git pull was applied in the repository {repo_name}"
+                }, 200
             except subprocess.CalledProcessError:
-                return jsonify(
-                    {"message": f"Error trying to git pull the repository {repo_name}"}
-                ), 500
+                return {
+                    "message": f"Error trying to git pull the repository {repo_name}"
+                }, 500
         else:
-            return jsonify(
-                {"message": "No information found about the repository in the payload"}
-            ), 400
+            return {
+                "message": "No information found about the repository in the payload"
+            }, 400
     else:
-        return jsonify({"message": "The request does not have JSON data"}), 400
+        return {"message": "The request does not have JSON data"}, 400
 
 
 if __name__ == "__main__":
