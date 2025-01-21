@@ -82,7 +82,7 @@ def webhook():
     # path_repo = "/route/to/your/repository/on/PythonAnywhere"
     # servidor_web = "/route/to/the/WSGI/file/for/configuration"
 
-    path_repo = "/home/prueba83/flask-project/ad-backend/"
+    path_repo = "/home/prueba83/flask-project/"
     servidor_web = "/var/www/prueba83_pythonanywhere_com_wsgi.py"
 
     # It checks if the POST request has JSON data
