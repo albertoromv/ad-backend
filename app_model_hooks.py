@@ -95,12 +95,19 @@ def webhook():
             repo_name = payload["repository"]["name"]
             clone_url = payload["repository"]["clone_url"]
 
+            print("aaaa", repo_name)
+            print("bbbb", clone_url)
+
             # It changes to the repository directory
             try:
                 os.chdir(path_repo)
             except FileNotFoundError:
                 return {
                     "message": "The directory of the repository does not exist!"
+                    + f"path_repo: {path_repo}"
+                    + f"servidor_web: {servidor_web}"
+                    + f"repo_name: {repo_name}"
+                    + f"clone_url: {clone_url}"
                 }, 404
 
             # Do a git pull in the repository
