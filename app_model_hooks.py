@@ -20,7 +20,7 @@ app.config["DEBUG"] = True
 @app.route("/", methods=["GET"])
 def hello():
     # return "Welcome to the API that predicts revenues from advertising!"
-    return "The webhook is working! I'm so happy! :) "
+    return "The webhook is working! I am so happy! :) "
 
 
 # Route to endpoint /api/v1/predict
@@ -82,7 +82,7 @@ def webhook():
     # path_repo = "/route/to/your/repository/on/PythonAnywhere"
     # servidor_web = "/route/to/the/WSGI/file/for/configuration"
 
-    path_repo = "/home/prueba83/flask-project/"
+    path_repo = "/home/prueba83/flask-project/ad-backend/"
     servidor_web = "/var/www/prueba83_pythonanywhere_com_wsgi.py"
 
     # It checks if the POST request has JSON data
