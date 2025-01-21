@@ -82,7 +82,7 @@ def webhook():
     # path_repo = "/route/to/your/repository/on/PythonAnywhere"
     # servidor_web = "/route/to/the/WSGI/file/for/configuration"
 
-    path_repo = "/home/prueba83/flask-project/ad-backend"
+    path_repo = "/home/prueba83/flask-project/"
     servidor_web = "/var/www/prueba83_pythonanywhere_com_wsgi.py"
 
     # It checks if the POST request has JSON data
@@ -95,19 +95,12 @@ def webhook():
             repo_name = payload["repository"]["name"]
             clone_url = payload["repository"]["clone_url"]
 
-            print("aaaa", repo_name)
-            print("bbbb", clone_url)
-
             # It changes to the repository directory
             try:
                 os.chdir(path_repo)
             except FileNotFoundError:
                 return {
-                    "messageeee": "The directory of the repository does not exist!"
-                    + f"path_repo: {path_repo}"
-                    + f"servidor_web: {servidor_web}"
-                    + f"repo_name: {repo_name}"
-                    + f"clone_url: {clone_url}"
+                    "message": "The directory of the repository does not exist!"
                 }, 404
 
             # Do a git pull in the repository
